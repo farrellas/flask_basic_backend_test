@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="headings">Sign In</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.username.label }}
+            {{ form.username(class='form-control', placeholder='Username') }}
+        </fieldset>
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password(class='form-control', placeholder='Password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.remember_me.label(class='form-check-label') }}
+            {{ form.remember_me(class='form-check-input') }}
+        </fieldset>
+        <br>
+        <div class="submit-button">
+            {{ form.submit(class='btn btn-primary submit-button btns')}}
+        </div>
+        <hr>
+        <h4 class="headings">New to HVAC Maintenance Logs?</h4>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('auth.signMeUp') }}">Sign Up</a>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

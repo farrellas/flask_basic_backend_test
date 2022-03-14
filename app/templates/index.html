@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="headings">Welcome to HVAC Maintenance Logs!</h1>
+<h5 class="headings">This is an application used for tracking your HVAC customer service history. It enables you to keep
+    a history of work performed for your customers, so you always know what was done last on a job site.</h5>
+
+<h3 class="headings">Have an account with us?</h3>
+<div class="btn btn-primary btns">
+    <a href="{{ url_for('auth.logIn') }}">Log In</a>
+</div>
+<hr>
+<h3 class="headings">First time? Sign up here</h3>
+<div class="btn btn-primary btns">
+    <a href="{{ url_for('auth.signMeUp') }}">Sign Up</a>
+</div>
+{% endblock content %}
