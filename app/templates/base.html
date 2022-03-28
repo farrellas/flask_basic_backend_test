@@ -14,6 +14,18 @@
 
 <body>
     <div id="main-content">
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         {% block content %}
 
         {% endblock content %}
@@ -21,6 +33,9 @@
         {% if current_user.is_authenticated %}
 
         <hr>
+        <div class="btn btn-secondary btns">
+            <a href="{{ url_for('home') }}">Home</a>
+        </div>
         <div class="btn btn-secondary btns">
             <a href="{{ url_for('auth.logMeOut') }}">Log Out</a>
         </div>

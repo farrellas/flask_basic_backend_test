@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1 class="headings">Welcome new user!</h1>
 <h1 class="headings">Sign Up</h1>
 <form method="POST">
@@ -21,6 +22,14 @@
         <fieldset>
             {{ form.confirm_password.label }}
             {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.first_name.label }}
+            {{ form.first_name(class='form-control', placeholder='First Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.last_name.label }}
+            {{ form.last_name(class='form-control', placeholder='Last Name') }}
         </fieldset>
         <br>
         <div class="submit-button">

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="headings">Add Company Affiliation</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.company_name.label }}
+            {{ form.company_name(class='form-control', placeholder='Company Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.company_password.label }}
+            {{ form.company_password(class='form-control', placeholder='Company Password') }}
+        </fieldset>
+        <br>
+        <div class="submit-button">
+            {{ form.submit(class='btn btn-primary submit-button btns')}}
+        </div>
+    </div>
+    <div>
+        <h2 class="headings">No company account yet?</h2>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('company.createCompany') }}">Create Company</a>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

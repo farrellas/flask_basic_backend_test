@@ -65,6 +65,10 @@ body {
     color: black;
 }
 
+.customer-card p {
+    margin: 0px;
+}
+
 .info_buttons {
     margin-top: 5px;
 }

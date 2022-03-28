@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="headings">Update System</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.name.label }}
+            {{ form.name(class='form-control', value=system.name) }}
+        </fieldset>
+        <fieldset>
+            {{ form.area_served.label }}
+            {{ form.area_served(class='form-control', value=system.area_served) }}
+        </fieldset>
+        <fieldset>
+            {{ form.system_type.label }}
+            {{ form.system_type(class='form-control', value=system.system_type) }}
+        </fieldset>
+        <fieldset>
+            {{ form.heating.label }}: 
+            {{ form.heating(class='switch', checked=system.heating) }}
+        </fieldset>
+        <fieldset>
+            {{ form.cooling.label }}: 
+            {{ form.cooling(class='switch', checked=system.cooling) }}
+        </fieldset>
+        <fieldset>
+            {{ form.notes.label }}
+            {% set f = form.notes.process_data(system.notes) %}
+            {{ form.notes(class='form-control', cols='25', rows='3') }}
+        </fieldset>
+        <br>
+        <div>
+            {{ form.submit(class='btn btn-primary submit-button')}}
+            <div class="btn btn-primary btns">
+                <a href="{{ url_for('customer.customerInfo', customer_id=customer.id) }}">Go Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

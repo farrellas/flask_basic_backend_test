@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="headings">Add a new System</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.name.label }}
+            {{ form.name(class='form-control') }}
+        </fieldset>
+        <fieldset>
+            {{ form.area_served.label }}
+            {{ form.area_served(class='form-control') }}
+        </fieldset>
+        <fieldset>
+            {{ form.system_type.label }}
+            {{ form.system_type(class='form-control') }}
+        </fieldset>
+        <fieldset>
+            {{ form.heating.label }}: 
+            {{ form.heating(class='switch') }}
+        </fieldset>
+        <fieldset>
+            {{ form.cooling.label }}: 
+            {{ form.cooling(class='switch') }}
+        </fieldset>
+        <fieldset>
+            {{ form.notes.label }}
+            {{ form.notes(class='form-control', placeholder='Notes...', cols='25', rows='3') }}
+        </fieldset>
+        <br>
+        <div>
+            {{ form.submit(class='btn btn-primary submit-button')}}
+            <div class="btn btn-primary btns">
+                <a href="{{ url_for('customer.customerInfo', customer_id=customer.id) }}">Go Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

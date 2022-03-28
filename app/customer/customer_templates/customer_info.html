@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card customer-card">
+    <div class="card-body">
+        <h4 class="card-title">{{ customer.name }}</h4>
+        <p class="card-text">{{ customer.street_address_1 }} {{ customer.street_address_2 }}</p>
+        <p class="card-text">{{ customer.city }}, {{ customer.state }}  {{ customer.zip_code }}</p>
+        <p class="card-text">{{ customer.email }}</p>
+    </div>
+</div>
+
+
+{% if customer.company_id == current_user.company_id %}
+    <div>
+        <div class="info-buttons">
+            <a href="{{ url_for('equipment.createSystem', customer_id=customer.id )}}" type="button" class="btn btn-primary btns info-buttons">Create New System</a>
+        </div>
+        <div class="info-buttons">
+            <a href="{{ url_for('customer.updateCustomer', customer_id=customer.id )}}" type="button" class="btn btn-warning btns info-buttons">Update Customer Info</a>
+        </div>
+    </div>
+    <br>
+
+
+    {% if systems %}
+        {% for system in systems %}
+            <a href="{{ url_for('equipment.systemInfo', system_id=system.id) }}" class="card customer-card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ system.name }}</h4>
+                    <p class="card-text">{{ system.area_served }}</p>
+                </div>
+            </a>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h2 class="headings">You currently have no systems on file for this customer.</h2>
+    {% endif %}
+
+    <div class="info-buttons">
+        <a href="{{ url_for('customer.customerList' )}}" type="button" class="btn btn-primary btns info-buttons">Go Back</a>
+    </div>
+
+
+{% endif %}
+
+{% endblock content %}

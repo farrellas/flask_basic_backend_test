@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card-body">
+    <h4 class="card-title">{{ system.name }}</h4>
+    <h6 class="card-text">{{ system.area_served }}</h6>
+    <h6 class="card-text">{{ system.system_type }}</h6>
+    <h6 class="card-text">Notes: {{ system.notes }}</h6>
+</div>
+<hr>
+{% if heat or cool or airhandler %}
+    {% for heateq in heat %}
+
+    {% endfor %}
+    {% for cooleq in cool %}
+
+    {% endfor %}
+    {% for airhandlereq in airhandler %}
+
+    {% endfor %}
+{% else %}
+    <h2 class="headings">You currently have no equipment on file for this system.</h2>
+{% endif %}
+
+
+<div>
+    <div class="info-buttons">
+        <a href="#" type="button" class="btn btn-danger btns info-buttons">Add Heating Equipment</a>
+    </div>
+    <div class="info-buttons">
+        <a href="#" type="button" class="btn btn-primary btns info-buttons">Add Cooling Equipment</a>
+    </div>
+    <div class="info-buttons">
+        <a href="#" type="button" class="btn btn-success btns info-buttons">Add Air Handling Equipment</a>
+    </div>
+    <div class="info-buttons">
+        <a href="{{ url_for('equipment.updateSystem', system_id=system.id )}}" type="button" class="btn btn-warning btns info-buttons">Update System Info</a>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- {{ url_for('equipment.createEquipment', system_id=system.id, type='heat' )}}
+{{ url_for('equipment.createEquipment', system_id=system.id, type='cool' )}}
+{{ url_for('equipment.createEquipment', system_id=system.id, type='airhandler' )}} -->
+
+<!-- {% for report in reports %}
+    <a href="{{ url_for('logs.logInfo', log_id=report.id) }}" class="card customer-card">
+        <div class="card-body">
+            <h4 class="card-title">{{ report.date_created.strftime('%m-%d-%Y  %H:%M') }}</h4>
+            <p class="card-text">{{ report.work_performed }}</p>
+        </div>
+    </a>
+    <hr>
+{% endfor %} -->

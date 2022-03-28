@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if customers %}
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('customer.createCustomer') }}">Create New Customer</a>
+        </div>
+        <h2 class="headings">Current Customers</h2>
+        
+        {% for customer in customers %}
+
+        <hr>
+        <a href="{{ url_for('customer.customerInfo', customer_id=customer.id) }}" class="card customer-card">
+            <div class="card-body">
+                <h4 class="card-title">{{ customer.name }}</h4>
+                <p class="card-text">{{ customer.street_address_1 }} {{ customer.street_address_2 }}</p>
+                <p class="card-text">{{ customer.city }}, {{ customer.state }}  {{ customer.zip_code }}</p>
+                <p class="card-text">{{ customer.email }}</p>
+            </div>
+        </a>
+        
+        {% endfor %}
+    {% else %}
+        <h2 class="headings">You currently have no customers on file.</h2>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('customer.createCustomer') }}">Create New Customer</a>
+        </div>
+    {% endif %}
+
+{% endblock content %}

@@ -4,6 +4,9 @@ from config import Config
 # blueprints
 from .auth.routes import auth
 from .logs.routes import logs
+from .company.routes import company
+from .customer.routes import customer
+from .equipment.routes import equipment
 
 # db
 from .models import db, User
@@ -19,6 +22,9 @@ def load_user(user_id):
 
 app.register_blueprint(auth)
 app.register_blueprint(logs)
+app.register_blueprint(company)
+app.register_blueprint(customer)
+app.register_blueprint(equipment)
 
 app.config.from_object(Config)
 

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="headings">Create a New Company</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.company_name.label }}
+            {{ form.company_name(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_1.label }}
+            {{ form.street_address_1(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_2.label }}
+            {{ form.street_address_2(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.city.label }}
+            {{ form.city(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.state.label }}
+            {{ form.state(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.zip_code.label }}
+            {{ form.zip_code(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.logo_url.label }}
+            {{ form.logo_url(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.company_password.label }}
+            <p>This will be for other users to affiliate themselves with your company.</p>
+            {{ form.company_password(class='form-control', placeholder='') }}
+        </fieldset>
+        <br>
+        <div class="submit-button">
+            {{ form.submit(class='btn btn-primary submit-button btns')}}
+        </div>
+        <hr>
+        <h4 class="headings">Company already have an account?</h4>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('auth.updateUserCompany') }}">Add company affilaiton</a>
+        </div>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('home') }}">Cancel</a>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="headings">Add a new customer</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.name.label }}
+            {{ form.name(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_1.label }}
+            {{ form.street_address_1(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_2.label }}
+            {{ form.street_address_2(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.city.label }}
+            {{ form.city(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.state.label }}
+            {{ form.state(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.zip_code.label }}
+            {{ form.zip_code(class='form-control', placeholder='') }}
+        </fieldset>
+        <fieldset>
+            {{ form.email.label }}
+            {{ form.email(class='form-control', placeholder='') }}
+        </fieldset>
+        <br>
+        <div>
+            {{ form.submit(class='btn btn-primary submit-button')}}
+            <div class="btn btn-primary btns">
+                <a href="{{ url_for('home') }}">Go Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

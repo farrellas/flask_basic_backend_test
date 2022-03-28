@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="headings">Update customer info</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.name.label }}
+            {{ form.name(class='form-control', value=customer.name) }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_1.label }}
+            {{ form.street_address_1(class='form-control', value=customer.street_address_1) }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_2.label }}
+            {{ form.street_address_2(class='form-control', value=customer.street_address_2) }}
+        </fieldset>
+        <fieldset>
+            {{ form.city.label }}
+            {{ form.city(class='form-control', value=customer.city) }}
+        </fieldset>
+        <fieldset>
+            {{ form.state.label }}
+            {{ form.state(class='form-control', value=customer.state) }}
+        </fieldset>
+        <fieldset>
+            {{ form.zip_code.label }}
+            {{ form.zip_code(class='form-control', value=customer.zip_code) }}
+        </fieldset>
+        <fieldset>
+            {{ form.email.label }}
+            {{ form.email(class='form-control', value=customer.email) }}
+        </fieldset>
+        
+        <div class="btns">
+            {{ form.submit(class='btn btn-primary submit-button')}}
+            <hr>
+            <!-- Button trigger modal -->
+            <div class="info-buttons">
+                <button type="button" class="btn btn-danger btns" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete Customer
+                </button>
+            </div>
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this customer?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Warning. This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <form action="{{ url_for('customer.deleteCustomer', customer_id=customer.id) }}" method="POST">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn btn-primary btns">
+                <a href="{{ url_for('customer.customerInfo', customer_id=customer_id) }}">Go Back</a>
+            </div>
+        </div>
+    </div>    
+</form>
+
+{% endblock content %}

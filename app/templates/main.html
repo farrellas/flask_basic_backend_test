@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="btn btn-primary btns">
+    <a href="{{ url_for('auth.showProfile') }}">My Profile</a>
+</div>
+{% if current_user.company_id %}
+<div class="btn btn-primary btns">
+    <a href="{{ url_for('company.companyProfile') }}">Company Info</a>
+</div>
+{% endif %}
+<div class="btn btn-primary btns">
+    <a href="{{ url_for('customer.customerList') }}">Customers</a>
+</div>
+
+{% endblock content %}

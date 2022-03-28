@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="headings">Update Company Info</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.company_name.label }}
+            {{ form.company_name(class='form-control', value=company.company_name) }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_1.label }}
+            {{ form.street_address_1(class='form-control', value=company.street_address_1) }}
+        </fieldset>
+        <fieldset>
+            {{ form.street_address_2.label }}
+            {{ form.street_address_2(class='form-control', value=company.street_address_2) }}
+        </fieldset>
+        <fieldset>
+            {{ form.city.label }}
+            {{ form.city(class='form-control', value=company.city) }}
+        </fieldset>
+        <fieldset>
+            {{ form.state.label }}
+            {{ form.state(class='form-control', value=company.state) }}
+        </fieldset>
+        <fieldset>
+            {{ form.zip_code.label }}
+            {{ form.zip_code(class='form-control', value=company.zip_code) }}
+        </fieldset>
+        <fieldset>
+            {{ form.logo_url.label }}
+            {{ form.logo_url(class='form-control', value=company.logo_url) }}
+        </fieldset>
+        <fieldset>
+            {{ form.company_password.label }}
+            <p>This will be for other users to affiliate themselves with your company.</p>
+            {{ form.company_password(class='form-control', value=company.company_password) }}
+        </fieldset>
+        <br>
+        <div class="submit-button">
+            {{ form.submit(class='btn btn-primary submit-button btns')}}
+        </div>
+        <hr>
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('company.companyProfile') }}">Go Back</a>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

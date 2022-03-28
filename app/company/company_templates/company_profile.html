@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>{{ company.company_name}}'s Profile</h1>
+    <h3>Address line 1: {{ company.street_address_1 }}</h3>
+    <h3>Address line 2: {{ company.street_address_2 }}</h3>
+    <h3>City: {{ company.city }}</h3>
+    <h3>State: {{ company.state }}</h3>
+    <h3>Zip Code: {{ company.zip_code }}</h3>
+    <h3>Logo: </h3>
+    <img src="{{ company.logo_url }}" alt="">
+    {% if current_user.id == company.admin_id %}
+        <div class="btn btn-primary btns">
+            <a href="{{ url_for('company.updateCompany') }}">Update Company Info</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
