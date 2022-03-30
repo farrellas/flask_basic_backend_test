@@ -68,6 +68,18 @@ class Customer(db.Model):
         self.email = email
         self.user_id = user_id
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "street_address_1": self.street_address_1,
+            "street_address_2": self.street_address_2,
+            "city": self.city,
+            "state": self.state,
+            "zip_code": self.zip_code,
+            "email": self.email
+        }
+
 class System(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

@@ -116,3 +116,12 @@ def deleteCustomer(customer_id):
     db.session.delete(customer)
     db.session.commit()
     return redirect(url_for('customer.customerList'))
+
+
+@customer.route('/api/customer-list')
+def apiCustomerList():
+    customers = Customer.query.all()
+    return {
+        'customers': [c.to_dict() for c in customers],
+        'total_results': len(customers)
+    }
